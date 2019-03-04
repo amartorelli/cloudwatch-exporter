@@ -1,0 +1,28 @@
+---
+rate: 200
+region: "eu-west-1"
+fetch_interval: 180
+namespaces: 
+  "AWS/SQS": 
+    metrics:
+    - name: "ApproximateNumberOfMessagesVisible"
+      dimensions:
+        QueueName: "^MYQUEUE$"
+  "AWS/EC2": 
+    metrics:
+    - name: "CPUUtilization"
+      dimensions:
+        AutoScalingGroupName: "MYCLUSTER1-.*"
+    - name: "CPUUtilization"
+      dimensions:
+        AutoScalingGroupName: "MYCLUSTER2-.*"
+    - name: "DiskReadBytes"
+      dimensions:
+        AutoScalingGroupName: "MYCLUSTER2-.*"
+output:
+  proto: "http"
+  address: "http://localhost:8086"
+  database: "telegraf"
+  user: "admin"
+  password: "admin"
+  interval: 60

@@ -1,0 +1,21 @@
+---
+rate: 200
+region: "eu-west-1"
+fetch_interval: 180
+namespaces: 
+  "AWS/SQS": 
+    metrics:
+    - name: "ApproximateNumberOfMessagesVisible"
+      dimensions:
+        QueueName: "^MYSQSQUEUE$"
+  "AWS/EC2": 
+    metrics:
+    - name: "CPUUtilization"
+      dimensions:
+        AutoScalingGroupName: "MYCLUSTER1-.*"
+    - name: "DiskReadBytes"
+      dimensions:
+        AutoScalingGroupName: "MYCLUSTER1-.*"
+output:
+  proto: "http"
+  interval: 60
