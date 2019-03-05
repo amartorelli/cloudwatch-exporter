@@ -17,7 +17,6 @@ For more informatino about AWS costs: https://aws.amazon.com/cloudwatch/pricing/
 The following is a configuration example:
 ```
 ---
----
 rate: 200
 region: "eu-west-1"
 fetch_interval: 180
